@@ -12,4 +12,9 @@ public class Attack : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public virtual bool Execute()
+    {
+        return false;
+    }
 }
