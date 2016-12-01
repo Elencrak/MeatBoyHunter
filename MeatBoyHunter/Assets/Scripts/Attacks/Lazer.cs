@@ -9,11 +9,14 @@ public class Lazer : Attack {
 
     public float waitTime = 1;
     public float elapsedWait = 0;
+
+    private Boss boss;
     // Use this for initialization
 
     void Awake()
     {
         LazerCollider.gameObject.SetActive(false);
+        boss = GetComponent<Boss>();
     }
 
     void Start () {
@@ -40,10 +43,10 @@ public class Lazer : Attack {
                 if (LazerCollider.gameObject.activeSelf == true)
                 {
                     LazerCollider.gameObject.SetActive(false);
+                    boss.LaunchedAttack++;
                 }
                 elapsedWait += Time.deltaTime;
                 return false;
-
             }
             else
             {

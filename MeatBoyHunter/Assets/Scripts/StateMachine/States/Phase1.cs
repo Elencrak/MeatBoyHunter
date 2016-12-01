@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Phase1 : State {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         base.Start();
 	}
 	

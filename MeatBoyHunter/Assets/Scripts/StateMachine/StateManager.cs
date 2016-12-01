@@ -7,8 +7,9 @@ public class StateManager : MonoBehaviour {
     public List<Attack> attacks;
     public List<State> states;
     public State startState;
+    
     private Attack currentAttack;
-
+ 
     private float durationAttack;
     private float elapsedDurationAttack;
 

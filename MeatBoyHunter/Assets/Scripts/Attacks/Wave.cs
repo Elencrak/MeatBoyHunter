@@ -10,9 +10,12 @@ public class Wave : Attack {
     public float waitTime = 1;
     public float elapsedWait = 0;
 
+    private Boss boss;
+
     void Awake()
     {
         waveCollider.gameObject.SetActive(false);
+        boss = GetComponent<Boss>();
     }
 
     // Use this for initialization
@@ -46,6 +49,7 @@ public class Wave : Attack {
                 if (waveCollider.gameObject.activeSelf == true)
                 {
                     waveCollider.gameObject.SetActive(false);
+                    boss.LaunchedAttack++;
                 }
                 elapsedWait += Time.deltaTime;
                 return false;
