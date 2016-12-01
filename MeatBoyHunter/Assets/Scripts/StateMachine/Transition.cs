@@ -35,23 +35,28 @@ public class Transition : MonoBehaviour {
 
     public bool Execute()
     {
+        bool condition = true;
+        bool action = true;
         foreach (Condition c in conditions)
         {
             if (c.ExecuteCondition() == false)
             {
-                return false;
+                condition = false;
             }
         }
+
+        if (condition == false)
+            return false;
 
         foreach (Action a in actions)
         {
             if (a.ExecuteAction() == false)
             {
-                return false;
+                   action = false;
             }
         }
 
-
-        return true;
+        Debug.Log(action);
+        return action == true && condition == true;
     }
 }

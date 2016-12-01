@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -23,6 +24,14 @@ public class Player : MonoBehaviour {
                 }
         }
 	}
+
+    void OnCollisionEnter(Collision collider)
+    {
+        if(collider.gameObject.name == "Boss")
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
     [SerializeField]
     private float speed = 15.0f;

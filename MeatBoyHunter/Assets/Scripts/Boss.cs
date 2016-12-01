@@ -4,13 +4,14 @@ using System.Collections;
 public class Boss : MonoBehaviour {
 
     public int nbAttackBeforeChange;
-    private int launchedAttack;
+    public int launchedAttack;
     public int LaunchedAttack
     {
         get { return launchedAttack; }
         set { launchedAttack = value; }
     }
 
+    public bool inCharge = false;
     // Use this for initialization
     void Start () {
 	

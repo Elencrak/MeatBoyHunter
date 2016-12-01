@@ -29,4 +29,6 @@ public class State : MonoBehaviour {
         }
         return returnValue;
     }
+
+    //public virtual bool updateState() { return false; }
 }

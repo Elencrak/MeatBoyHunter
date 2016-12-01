@@ -4,8 +4,8 @@ using System.Collections;
 public class CheckPositionAndAction : Condition {
 
     public Boss boss;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -18,7 +18,7 @@ public class CheckPositionAndAction : Condition {
     { 
         if(boss.LaunchedAttack >= boss.nbAttackBeforeChange)
         {
-            boss.LaunchedAttack = 0;
+            //boss.LaunchedAttack = 0;
             return true;
         }
         return false;

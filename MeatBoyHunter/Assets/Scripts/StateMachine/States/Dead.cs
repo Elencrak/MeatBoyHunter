@@ -10,6 +10,6 @@ public class Dead : State {
 
     // Update is called once per frame
     void Update () {
-	
+	    
 	}
 }

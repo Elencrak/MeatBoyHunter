@@ -19,41 +19,44 @@ public class Lazer : Attack {
         boss = GetComponent<Boss>();
     }
 
-    void Start () {
-
-	}
-
     public override bool Execute()
     {
-        Debug.Log("Lazer");
-        if (elapsedDuration < duration)
+        if (boss.inCharge == false)
         {
-            if (LazerCollider.gameObject.activeSelf == false)
+            Debug.Log("Lazer");
+            if (elapsedDuration < duration)
             {
-                LazerCollider.gameObject.SetActive(true);
-                return false;
-            }
-            elapsedDuration += Time.deltaTime;
-            return false;
-        }
-        else
-        {
-            if (waitTime > elapsedWait)
-            {
-                if (LazerCollider.gameObject.activeSelf == true)
+                if (LazerCollider.gameObject.activeSelf == false)
                 {
-                    LazerCollider.gameObject.SetActive(false);
-                    boss.LaunchedAttack++;
+                    LazerCollider.gameObject.SetActive(true);
+                    return false;
                 }
-                elapsedWait += Time.deltaTime;
+                elapsedDuration += Time.deltaTime;
                 return false;
             }
             else
             {
-                elapsedWait = 0;
-                elapsedDuration = 0;
-                return true;
+                if (waitTime > elapsedWait)
+                {
+                    if (LazerCollider.gameObject.activeSelf == true)
+                    {
+                        LazerCollider.gameObject.SetActive(false);
+                        boss.LaunchedAttack++;
+                    }
+                    elapsedWait += Time.deltaTime;
+                    return false;
+                }
+                else
+                {
+                    elapsedWait = 0;
+                    elapsedDuration = 0;
+                    return true;
+                }
             }
+        }
+        else
+        {
+            return true;
         }
     }
 }

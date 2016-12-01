@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IsDead : Transition {
+public class IsDead : Condition {
 
 	// Use this for initialization
 	void Start () {

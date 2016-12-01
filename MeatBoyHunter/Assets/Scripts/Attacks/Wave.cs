@@ -31,36 +31,43 @@ public class Wave : Attack {
 
     public override bool Execute()
     {
-        Debug.Log("Wave");
-        if (elapsedDuration < duration)
+        if (boss.inCharge == false)
         {
-            if (waveCollider.gameObject.activeSelf == false)
+            Debug.Log("Wave");
+            if (elapsedDuration < duration)
             {
-                waveCollider.gameObject.SetActive(true);
-                return false;
-            }
-            elapsedDuration += Time.deltaTime;
-            return false;
-        }
-        else
-        {
-            if (waitTime > elapsedWait)
-            {
-                if (waveCollider.gameObject.activeSelf == true)
+                if (waveCollider.gameObject.activeSelf == false)
                 {
-                    waveCollider.gameObject.SetActive(false);
-                    boss.LaunchedAttack++;
+                    waveCollider.gameObject.SetActive(true);
+                    return false;
                 }
-                elapsedWait += Time.deltaTime;
+                elapsedDuration += Time.deltaTime;
                 return false;
-
             }
             else
             {
-                elapsedWait = 0;
-                elapsedDuration = 0;
-                return true;
+                if (waitTime > elapsedWait)
+                {
+                    if (waveCollider.gameObject.activeSelf == true)
+                    {
+                        waveCollider.gameObject.SetActive(false);
+                        boss.LaunchedAttack++;
+                    }
+                    elapsedWait += Time.deltaTime;
+                    return false;
+
+                }
+                else
+                {
+                    elapsedWait = 0;
+                    elapsedDuration = 0;
+                    return true;
+                }
             }
+        }
+        else
+        {
+            return true;
         }
     }
 }
